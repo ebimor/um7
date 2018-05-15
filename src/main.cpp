@@ -218,6 +218,14 @@ void configureSensor(um7::Comms* sensor, ros::NodeHandle *private_nh)
   bool zero_gyros;
   private_nh->param<bool>("zero_gyros", zero_gyros, true);
   if (zero_gyros) sendCommand(sensor, r.cmd_zero_gyros, "zero gyroscopes");
+
+  //configureVector3(sensor, r.mag_ref, "~mag_ref", "magnetic reference vector");
+  //configureVector3(sensor, r.accel_ref, "~accel_ref", "accelerometer reference vector");
+  configureVector3(sensor, r.mag_bias, "mag_bias", "magnetic bias vector");
+  //configureVector3(sensor, r.accel_bias, "~accel_bias", "accelerometer bias vector");
+  //configureVector3(sensor, r.gyro_bias, "~gyro_bias", "gyroscope bias vector");
+  configureVector9(sensor, r.mag_soft_bias, "/soft_iron_bias", "soft iron bias matrix");
+
 }
 
 
