@@ -9,9 +9,9 @@
   <remap from="/imu/data" to="/imu/data_raw"/>
   <param name="/port" value="/dev/ttyUSB0" />
   <rosparam param="/soft_iron_bias">[0.01, 0.0, 0.0, 0.0, 0.01, 0.0, 0.0, 0.0, 0.01]</rosparam>
-  <rosparam param="/mag_bias/x">25</rosparam>
-  <rosparam param="/mag_bias/y">42</rosparam>
-  <rosparam param="/mag_bias/z">89</rosparam>
+  <rosparam param="/mag_bias/x">21</rosparam>
+  <rosparam param="/mag_bias/y">29</rosparam>
+  <rosparam param="/mag_bias/z">33</rosparam>
   </node>
 
   <node
