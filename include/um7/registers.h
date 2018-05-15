@@ -159,6 +159,7 @@ class Registers
 {
   public:
     Registers() :
+      mag_soft_bias(this,CREG_MAG_CAL1_1, 9),
       gyro_raw(this, DREG_GYRO_RAW_XY, 3),
       accel_raw(this, DREG_ACCEL_RAW_XY, 3),
       mag_raw(this, DREG_MAG_RAW_XY, 3),
@@ -192,8 +193,8 @@ class Registers
     const Accessor<uint32_t> communication, misc_config, status, comrate2,
                             comrate4, comrate5, comrate6;
 
-    const Accessor<float>  mag_bias;
-
+    const Accessor<float> mag_bias;
+    const Accessor<float> mag_soft_bias;
     // Commands
     const Accessor<uint32_t> cmd_zero_gyros, cmd_reset_ekf, cmd_set_mag_ref;
 
