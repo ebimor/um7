@@ -221,7 +221,7 @@ void configureSensor(um7::Comms* sensor, ros::NodeHandle *private_nh)
 
   //configureVector3(sensor, r.mag_ref, "~mag_ref", "magnetic reference vector");
   //configureVector3(sensor, r.accel_ref, "~accel_ref", "accelerometer reference vector");
-  configureVector3(sensor, r.mag_bias, "mag_bias", "magnetic bias vector");
+  configureVector3(sensor, r.mag_bias, "/mag_bias", "magnetic bias vector");
   //configureVector3(sensor, r.accel_bias, "~accel_bias", "accelerometer bias vector");
   //configureVector3(sensor, r.gyro_bias, "~gyro_bias", "gyroscope bias vector");
   configureVector9(sensor, r.mag_soft_bias, "/soft_iron_bias", "soft iron bias matrix");
@@ -300,12 +300,14 @@ void publishMsgs(um7::Registers& r, ros::NodeHandle* imu_nh, sensor_msgs::Imu& i
     if (tf_ned_to_enu)
     {
       // world frame
+      //std::cout << "Publish command" << std::endl;
       mag_msg.vector.x =  r.mag.get_scaled(1);
       mag_msg.vector.y =  r.mag.get_scaled(0);
       mag_msg.vector.z = -r.mag.get_scaled(2);
     }
     else
     {
+      //std::cout << "Publish command2" << std::endl;
       mag_msg.vector.x = r.mag.get_scaled(0);
       mag_msg.vector.y = r.mag.get_scaled(1);
       mag_msg.vector.z = r.mag.get_scaled(2);
