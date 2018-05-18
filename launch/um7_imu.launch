@@ -1,18 +1,14 @@
 <?xml version="1.0"?>
 <launch>
-  <node
-	pkg="um7"
-	type="um7_driver"
-	name="um7_driver"
-	output="screen">
-  <param name="tf_ned_to_enu" value="true"/>
-  <remap from="/imu/data" to="/imu/data_raw"/>
-  <param name="/port" value="/dev/ttyUSB0" />
-  <rosparam param="/soft_iron_bias">[0.01, 0.0, 0.0, 0.0, 0.01, 0.0, 0.0, 0.0, 0.01]</rosparam>
-  <rosparam param="/mag_bias/x">21</rosparam>
-  <rosparam param="/mag_bias/y">29</rosparam>
-  <rosparam param="/mag_bias/z">33</rosparam>
-  </node>
+   <node pkg="um7" type="um7_driver" name="um7_driver" output="screen">
+		<param name="/tf_ned_to_enu" value="true"/>
+		<remap from="imu/data" to="imu/data_raw"/>
+		<param name="port" value="/dev/ttyUSB0" />
+		<rosparam param="/soft_iron_bias">[0.01, 0.0, 0.0, 0.0, 0.01, 0.0, 0.0, 0.0, 0.01]</rosparam>
+		<rosparam param="/mag_bias/x">42.0</rosparam>
+		<rosparam param="/mag_bias/y">-25.0</rosparam>
+		<rosparam param="/mag_bias/z">-42.5</rosparam>
+	</node>
 
   <node
 	pkg="imu_filter_madgwick"
@@ -24,6 +20,7 @@
     <param name="publish_debug_topics" value="true"/>
     <param name="world_frame" value="enu"/>
     <param name="publish_tf" value="false"/>
-    <param name="mag_declination" value="-9.5" />
+    <param name="mag_declination" value="0" />
+    <param name="orientation_stddev" value="0.1" />
   </node>
 </launch>
